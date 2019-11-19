@@ -1,49 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Heist
+namespace HeistExercise
 {
     class Program
     {
         static void Main(string[] args)
         {
             // Phase 1
-            Console.WriteLine("Plan Your Hesit");
-            // Create a way to store a single team member. 
-            // A team member will have a name, a skill Level and a courage factor. 
-            // The skill Level will be a positive integer and the courage factor will be a decimal between 0.0 and 2.0.
+            Console.WriteLine("Plan Your Heist");
+            Console.WriteLine();
+            Heister teamMember;
 
-            Dictionary<string, string> teamMember = new Dictionary<string, string>();
-
-            // Prompt the user to enter a team member's name and save that name.
-            Console.WriteLine("Enter in your team member's name");
+            Console.WriteLine("What is the team member's name?");
             string name = Console.ReadLine();
-            teamMember.Add("Name", $"{name}");
 
-            // Prompt the user to enter a team member's skill level and save that skill level with the name.
-            Console.WriteLine("Enter your team member's skill level");
-            string skillLevel = Console.ReadLine();
-            teamMember.Add("Skill Level", $"{skillLevel}");
+            Console.WriteLine("What's your tema member's skill level?");
+            string skillLevelString = Console.ReadLine();
+            int skillLevel;
 
-            // Prompt the user to enter a team member's courage factor and save that courage factor with the name.
-            Console.WriteLine("Enter your team member's courage factor");
-            string courageFactor = Console.ReadLine();
-            teamMember.Add("Courage Factor", $"{courageFactor}");
-
-            // Display the team member's information.
-            foreach (KeyValuePair<string, string> attribute in teamMember)
+            try
             {
-                Console.WriteLine($"{attribute.Key}: {attribute.Value}");
+                skillLevel = int.Parse(skillLevelString);
+            }
+            catch (Exception ex)
+            // ex prints message to the console when called. 
+            {
+                Console.WriteLine($"{skillLevelString} is not a valid skill level. Using a default value of 10");
+                skillLevel = 10;
+            }
+            Console.WriteLine("What's your team member's courage factor?");
+            string courageFactorString = Console.ReadLine();
+            decimal courageFactor;
+
+            try
+            {
+                courageFactor = decimal.Parse(courageFactorString);
+            }
+            catch (Exception)
+            {
+                // M means money symbol so the compiler is ok with it. 
+                Console.WriteLine($"{courageFactorString} is not a valid courage factor. Using a default value of 1");
+                courageFactor = 1.0M;
             }
 
-            // Phase 2
-            // The program should be updated to...
+            teamMember = new Heister()
+            {
+                Name = name,
+                SkillLevel = skillLevel,
+                CourageFactor = courageFactor
 
-            // Create a way to store several team members.
-            // Collect several team members' information.
-            // Stop collecting team members when a blank name is entered.
-            // Display a message containing the number of members of the team.
-            // Display each team member's information.
+            };
+            Console.WriteLine($"Name: {teamMember.Name}");
+            Console.WriteLine($"Skill Level: {teamMember.SkillLevel}");
+            Console.WriteLine($"Courage Factor: {teamMember.CourageFactor}");
+
         }
     }
 }
