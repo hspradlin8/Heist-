@@ -10,10 +10,17 @@ namespace HeistExercise
             // Phase 1
             Console.WriteLine("Plan Your Heist");
             Console.WriteLine();
-            Heister teamMember;
+            // Heister teamMember;
+
+            // Create a way to store several team members.
+            List<Heister> NewHeister = new List<Heister>();
 
             Console.WriteLine("What is the team member's name?");
             string name = Console.ReadLine();
+            if (name == "")
+            {
+                Console.WriteLine("Enter a name");
+            }
 
             Console.WriteLine("What's your tema member's skill level?");
             string skillLevelString = Console.ReadLine();
@@ -23,7 +30,7 @@ namespace HeistExercise
             {
                 skillLevel = int.Parse(skillLevelString);
             }
-            catch (Exception ex)
+            catch (Exception)
             // ex prints message to the console when called. 
             {
                 Console.WriteLine($"{skillLevelString} is not a valid skill level. Using a default value of 10");
@@ -44,16 +51,22 @@ namespace HeistExercise
                 courageFactor = 1.0M;
             }
 
-            teamMember = new Heister()
-            {
-                Name = name,
-                SkillLevel = skillLevel,
-                CourageFactor = courageFactor
+            // Collect several team members' information.
 
-            };
-            Console.WriteLine($"Name: {teamMember.Name}");
-            Console.WriteLine($"Skill Level: {teamMember.SkillLevel}");
-            Console.WriteLine($"Courage Factor: {teamMember.CourageFactor}");
+            Heister TeamMemberOne = new Heister("Seth", 10, 8);
+            Heister TeamMemberTwo = new Heister("David", 10, 10);
+            Heister TeamMemberThree = new Heister("Nick", 10, 8);
+            Heister TeamMemberFour = new Heister("Fortunato", 10, 7);
+
+
+
+            foreach (Heister TeamMember in NewHeister)
+            {
+                Console.WriteLine($"Name: {TeamMember.Name} Skill Level: {TeamMember.SkillLevel} Courage Factor: {TeamMember.CourageFactor}");
+            }
+            //             Console.WriteLine($"Name: {TeamMember.Name}");
+            //             Console.WriteLine($"Skill Level: {TeamMember.SkillLevel}");
+            //             Console.WriteLine($"Courage Factor: {TeamMember.CourageFactor}");
 
         }
     }
