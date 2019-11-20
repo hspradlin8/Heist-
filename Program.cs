@@ -83,6 +83,8 @@ namespace HeistExercise
             Console.Clear();
 
             foreach (Heister TeamMember in NewHeisters)
+            // catch (Exception)
+            // ex prints message to the console when called. 
             {
                 Console.WriteLine($"Name: {TeamMember.Name} Skill Level: {TeamMember.SkillLevel} Courage Factor: {TeamMember.CourageFactor}");
             }
