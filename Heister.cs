@@ -16,5 +16,11 @@ namespace HeistExercise
             CourageFactor = courageFactor;
         }
 
+        public Heister()
+        {
+
+        }
     }
+
+
 }
